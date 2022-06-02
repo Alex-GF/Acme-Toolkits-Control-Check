@@ -28,8 +28,15 @@ public class InventorChimpumCreateTest extends TestHarness {
         final LocalDateTime now = LocalDateTime.now();
         final String date = now.getYear() + "/"
                 + (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) + "/"
-                + now.getDayOfMonth() + " " + now.getHour() + ":"
+                + (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth()) +" "
+                + (now.getHour()) + ":"
                 + (now.getMinute() < 10 ? "0" + now.getMinute() : now.getMinute());
+        final String code = ""+ String.valueOf(now.getYear()).substring(2)
+            			+ (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) 
+            			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ "-ABC";
+        
+        
+        super.fillInputBoxIn("code", code);
         super.fillInputBoxIn("title", title);
         super.fillInputBoxIn("description", description);
         super.fillInputBoxIn("startDate", startDate);
@@ -62,7 +69,7 @@ public class InventorChimpumCreateTest extends TestHarness {
     @ParameterizedTest
     @CsvFileSource(resources = "/inventor/chimpum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
     @Order(20)
-    public void negative(final int recordIndex, final String title, final String description, final String startDate, final String finishDate, final String budget, final String link, final int itemIndex) {
+    public void negative(final int recordIndex,final String fakeCode, final String title, final String description, final String startDate, final String finishDate, final String budget, final String link, final int itemIndex) {
         super.signIn("inventor1", "inventor1");
 
         super.clickOnMenu("Inventor", "My Items");
@@ -72,7 +79,19 @@ public class InventorChimpumCreateTest extends TestHarness {
         super.clickOnListingRecord(itemIndex);
         
 		super.clickOnButton("Add chimpum");
+		
+		String code = fakeCode;
+		
+		if (fakeCode.equals("..")) {
+			final LocalDateTime now = LocalDateTime.now();
+			code = ""+ String.valueOf(now.getYear()).substring(2)
+	 			+ (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) 
+	 			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ "-ABC";
+			
+		}
         
+		
+		super.fillInputBoxIn("code", code);
         super.fillInputBoxIn("title", title);
         super.fillInputBoxIn("description", description);
         super.fillInputBoxIn("startDate", startDate);

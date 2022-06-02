@@ -38,7 +38,7 @@
 		<link>
 			<name>acme-framework</name>
 			<type>2</type>
-			<location>C:/Users/yalej/Desktop/Universidad/Curso 2021-2022/Diseño y Pruebas/DP2/Workspace-22.0/Frameworks/Acme-Framework-22.7/target/classes</location>
+			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-22.7/target/classes</locationURI>
 		</link>
 	</linkedResources>
 	<filteredResources>

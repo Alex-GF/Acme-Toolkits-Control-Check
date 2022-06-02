@@ -4,7 +4,12 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form readonly="${readonly}">
-	<acme:input-textbox readonly="true" code="inventor.chimpum.form.label.code" path="code"/>	
+	<jstl:if test="${acme:anyOf(command, 'show, update, delete')}">
+		<acme:input-textbox readonly="true" code="inventor.chimpum.form.label.code" path="code"/>
+	</jstl:if>
+	<jstl:if test="${command == 'create'}">
+		<acme:input-textbox placeholder="201101-ASD" code="inventor.chimpum.form.label.code" path="code"/>	
+	</jstl:if>
 	<acme:input-textbox code="inventor.chimpum.form.label.title" path="title"/>
 	<acme:input-textarea code="inventor.chimpum.form.label.description" path="description"/>
 	<acme:input-moment readonly="true" code="inventor.chimpum.form.label.creationMoment" path="creationMoment"/>	

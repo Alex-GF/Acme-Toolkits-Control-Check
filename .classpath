@@ -41,16 +41,8 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="external-libs/AntiSpam.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/Acme-Framework-22.7">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="external-libs/AntiSpam.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Acme-Framework-22.7"/>
 	<classpathentry kind="src" path=".apt_generated">
 		<attributes>
 			<attribute name="optional" value="true"/>

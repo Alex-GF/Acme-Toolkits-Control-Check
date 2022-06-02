@@ -59,7 +59,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity,errors,"code", "title", "description", "creationMoment", "startDate", "finishDate", "budget", "link");
+		request.bind(entity,errors, "title", "description", "startDate", "finishDate", "budget", "link");
 		
 		final Model model = request.getModel();
 		
@@ -88,7 +88,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 			final Money m = this.changeLibrary.computeMoneyExchange(entity.getBudget(), defaultCurrency).getTarget();
 			
 			model.setAttribute("showDefaultCurrency", true);
-			model.setAttribute("retailPrice",m);
+			model.setAttribute("budget",m);
 			model.setAttribute("defaultCurrency", entity.getBudget());
 		}
 		
@@ -188,6 +188,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 			errors.state(request, entity.getFinishDate().after(minimumPeriodFinish), "finishDate", "inventor.chimpum.form.error.acceptedPeriodTime.finish");
 			
 		}
+		
 	}
 
 	@Override

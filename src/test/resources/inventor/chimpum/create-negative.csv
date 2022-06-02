@@ -1,14 +1,14 @@
-recordIndex,title,description,start-date,finish-date,budget,link,itemIndex
-0,,,,,,,4
-0,title-04,description-04,2022/08/04 01:11,2022/10/06 01:11,EUR -5.99,http://hola.com,4
-0,title-05,description-05,2022/08/04 01:12,2022/10/06 01:12,MEX 21.69,,4
-0,title-05,description-05,2021/08/04 01:12,2022/10/06 01:12,EUR 21.69,,4
-0,title-05,description-05,2022/08/04 01:12,2021/10/06 01:12,EUR 21.69,,4
-0,title-05,description-05,2022/06/04 01:12,2022/10/06 01:12,EUR 21.69,,4
-0,title-05,description-05,2022/08/04 01:12,2022/07/06 01:12,EUR 21.69,,4
-0,title-05,description-05,2022/08/04 01:12,2022/06/06 01:12,EUR 21.69,,4
-0,title-05,description-05,2022/08/04 01:12,2022/10/06 01:12,EUR 21.69,mi-url,4
-0,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean ma",description-05,2022/08/04 01:12,2022/10/06 01:12,EUR 21.69,,4
-0,title-05,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.
-
-",2022/08/04 01:12,2022/10/06 01:12,EUR 21.69,,4
+recordIndex,code,title,description,start-date,finish-date,budget,link,itemIndex
+0,..,,,,,,,4
+0,..,title-04,description-04,2022/08/04 01:11,2022/10/06 01:11,EUR -5.99,http://hola.com,4
+0,..,title-05,description-05,2022/08/04 01:12,2022/10/06 01:12,MEX 21.69,,4
+0,..,title-05,description-05,2021/08/04 01:12,2022/10/06 01:12,EUR 21.69,,4
+0,..,title-05,description-05,2022/08/04 01:12,2021/10/06 01:12,EUR 21.69,,4
+0,..,title-05,description-05,2022/06/04 01:12,2022/10/06 01:12,EUR 21.69,,4
+0,..,title-05,description-05,2022/08/04 01:12,2022/07/06 01:12,EUR 21.69,,4
+0,..,title-05,description-05,2022/08/04 01:12,2022/06/06 01:12,EUR 21.69,,4
+0,..,title-05,description-05,2022/08/04 01:12,2022/10/06 01:12,EUR 21.69,mi-url,4
+0,..,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean ma",description-05,2022/08/04 01:12,2022/10/06 01:12,EUR 21.69,,4
+0,..,title-05,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.",2022/08/04 01:12,2022/10/06 01:12,EUR 21.69,,4
+0,230416-ABC,title-04,description-04,2022/08/04 01:11,2022/10/06 01:11,EUR 5.99,http://hola.com,4
+0,230416-fdm,title-04,description-04,2022/08/04 01:11,2022/10/06 01:11,EUR 5.99,http://hola.com,4

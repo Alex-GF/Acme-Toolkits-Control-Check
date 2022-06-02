@@ -36,12 +36,19 @@ public class InventorChimpumDeleteTest extends TestHarness {
 		super.checkColumnHasValue(this.RECORD_INDEX_ITEM_PRUEBA, 0, "Taladro");
 		super.clickOnListingRecord(this.RECORD_INDEX_ITEM_PRUEBA);
 		super.checkFormExists();
+		
+		final LocalDateTime now = LocalDateTime.now();
+		final String code = ""+ String.valueOf(now.getYear()).substring(2)
+			+ (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) 
+			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ "-ABC";
+
 
 		super.clickOnButton("Add chimpum");
+		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("title", "DELETE TEST CHIMPUM");
 		super.fillInputBoxIn("description", "Descripción del delete test");
 		
-		final LocalDateTime now =LocalDateTime.now();
+		
 		final LocalDateTime start = now.plusMonths(2);
 		final LocalDateTime finish = start.plusWeeks(2);
         final String startDate = InventorChimpumDeleteTest.stringDate(start);

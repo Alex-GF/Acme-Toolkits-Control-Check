@@ -18,7 +18,6 @@ import acme.framework.controllers.Request;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 import acme.utils.AcceptedCurrencyLibrary;
-import acme.utils.GenerateCodeLibrary;
 import main.AntiSpam;
 
 @Service
@@ -86,28 +85,28 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		final Chimpum result = new Chimpum();
 		
-		final List<String> codes = this.repository.findAllCodes();
-		final String firstCode = GenerateCodeLibrary.generateCode(codes,"^[A-Z]{3}(-[0-9])?$");
-		
-		final Calendar c = new GregorianCalendar();
-		final Date d = new Date();
-		c.setTime(d);
-		
-		String code = c.get(Calendar.YEAR) + "";
-		
-		code = code.substring(2);
-		
-		if(c.get(Calendar.MONTH) < 9) {
-			code += "0"+ (c.get(Calendar.MONTH) + 1);
-		}else {
-			code += c.get(Calendar.MONTH);
-		}
-				
-		code += c.get(Calendar.DAY_OF_MONTH);
-		
-		code += "-" + firstCode;
-		
-		result.setCode(code);
+//		final List<String> codes = this.repository.findAllCodes();
+//		final String firstCode = GenerateCodeLibrary.generateCode(codes,"^[A-Z]{3}(-[0-9])?$");
+//		
+//		final Calendar c = new GregorianCalendar();
+//		final Date d = new Date();
+//		c.setTime(d);
+//		
+//		String code = c.get(Calendar.YEAR) + "";
+//		
+//		code = code.substring(2);
+//		
+//		if(c.get(Calendar.MONTH) < 9) {
+//			code += "0"+ (c.get(Calendar.MONTH) + 1);
+//		}else {
+//			code += c.get(Calendar.MONTH);
+//		}
+//				
+//		code += c.get(Calendar.DAY_OF_MONTH);
+//		
+//		code += "-" + firstCode;
+//		
+//		result.setCode(code);
 		result.setCreationMoment(new Date());
 		
 		result.setItem(item);
@@ -194,6 +193,39 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			
 			
 			errors.state(request, entity.getFinishDate().after(minimumPeriodFinish), "finishDate", "inventor.chimpum.form.error.acceptedPeriodTime.finish");
+		}
+		
+		if (!errors.hasErrors("code")) {
+			
+			final Calendar c = new GregorianCalendar();
+			c.setTime(entity.getCreationMoment());
+			
+			final int yearInt = c.get(Calendar.YEAR);
+			final int monthInt = c.get(Calendar.MONTH);
+			final int dayInt = c.get(Calendar.DAY_OF_MONTH);
+			
+			final String yearString = String.valueOf(yearInt).substring(2);
+			
+			String monthString = "";
+			if(c.get(Calendar.MONTH) < 9) {
+				 monthString += "0"+ (c.get(Calendar.MONTH) + 1);
+			}else {
+				monthString += c.get(Calendar.MONTH);
+			}
+			
+			String dayString = "";
+			if(c.get(Calendar.DAY_OF_MONTH) < 9) {
+				dayString += "0"+ (c.get(Calendar.DAY_OF_MONTH));
+			}else {
+				dayString += c.get(Calendar.DAY_OF_MONTH);
+			}
+			
+			final String codeYear = entity.getCode().split("-")[0].substring(0,2);
+			final String codeMonth = entity.getCode().split("-")[0].substring(2,4);
+			final String codeDay = entity.getCode().split("-")[0].substring(4,6);
+			
+			errors.state(request, codeYear.equals(yearString) && codeMonth.equals(monthString) && codeDay.equals(dayString) , "code", "inventor.chimpum.form.error.invalidCode");
+			
 		}
 		
 	}

@@ -22,3 +22,4 @@ inventor.chimpum.form.error.acceptedCurrency = La divisa introducida no existe o
 inventor.chimpum.form.error.positiveValue = La cantidad debe ser positiva
 inventor.chimpum.form.error.acceptedPeriodTime.start = La fecha de inicio debe ser, como mínimo, un mes posterior a la de creación
 inventor.chimpum.form.error.acceptedPeriodTime.finish = La fecha de fin debe ser, como mínimo, una semana después de la de inicio
+inventor.chimpum.form.error.invalidCode = La fecha del código debe coincidir con la fecha de creación

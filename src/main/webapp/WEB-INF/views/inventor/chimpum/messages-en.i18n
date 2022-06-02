@@ -22,3 +22,4 @@ inventor.chimpum.form.error.acceptedCurrency = The chosen currency is not handle
 inventor.chimpum.form.error.positiveValue = The amount must be positive
 inventor.chimpum.form.error.acceptedPeriodTime.start = The start date must be, at least, one month after the creation moment
 inventor.chimpum.form.error.acceptedPeriodTime.finish = The finish date must be, at least, one week after the creation moment
+inventor.chimpum.form.error.invalidCode = The date of the code must match with the creation moment
