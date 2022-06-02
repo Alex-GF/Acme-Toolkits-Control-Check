@@ -51,6 +51,21 @@
 <span id="administrator.dashboard.form.label.average-retail-price-of-tools-by-currency">
 	<acme:message code="administrator.dashboard.form.label.average-retail-price-of-tools-by-currency" />
 </span>
+<span id="administrator.dashboard.form.label.ratio-of-artefacts-with-chimpum">
+	<acme:message code="administrator.dashboard.form.label.ratio-of-artefacts-with-chimpum" />
+</span>
+<span id="administrator.dashboard.form.label.average-chimpum-of-artefact-by-currency">
+	<acme:message code="administrator.dashboard.form.label.average-chimpum-of-artefact-by-currency" />
+</span>
+<span id="administrator.dashboard.form.label.deviation-chimpum-of-artefact-by-currency">
+	<acme:message code="administrator.dashboard.form.label.deviation-chimpum-of-artefact-by-currency" />
+</span>
+<span id="administrator.dashboard.form.label.max-chimpum-of-artefact-by-currency">
+	<acme:message code="administrator.dashboard.form.label.max-chimpum-of-artefact-by-currency" />
+</span>
+<span id="administrator.dashboard.form.label.min-chimpum-of-artefact-by-currency">
+	<acme:message code="administrator.dashboard.form.label.min-chimpum-of-artefact-by-currency" />
+</span>
 
 <script type="text/javascript">
 	$(document).ready(function () {

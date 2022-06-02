@@ -128,10 +128,18 @@
     }
 
     function getPrettyText(value, text){
-        let result = value + " " + text.split(" ")[text.split(" ").length-1];
-        if(parseInt(value.trim()) === 1 && result[result.length-1] === "s"){
-            result = result.substring(0, result.length-1);
+        let result = "";
+        if(text.toLowerCase().includes("ratio")){
+            value = Number(value.trim());
+            value = value%1===0?value:valuetoFixed(2);
+            result = value + " " + "%";
+        }else{
+            result = value + " " + text.split(" ")[text.split(" ").length-1];
+            if(parseInt(value.trim()) === 1 && result[result.length-1] === "s"){
+                result = result.substring(0, result.length-1);
+            }
         }
+        
         return result;
     }
 

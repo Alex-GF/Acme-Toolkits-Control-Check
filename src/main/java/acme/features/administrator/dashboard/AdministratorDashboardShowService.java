@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.ItemType;
 import acme.entities.patronage.Status;
 import acme.forms.AdministratorDashboard;
 import acme.framework.components.models.Model;
@@ -53,6 +54,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Map<Status, Double>				  deviationBudgetOfPatronagesByStatus;
 		final Map<Status, Double>				  minBudgetOfPatronagesByStatus;
 		final Map<Status, Double>				  maxBudgetOfPatronagesByStatus;
+		final double							  ratioOfArtefactsWithChimpum;
+		final Map<String, Double>				  averageChimpumOfArtefactByCurrency;
+		final Map<String, Double>				  deviationChimpumOfArtefactByCurrency;
+		final Map<String, Double>				  maxChimpumOfArtefactByCurrency;
+		final Map<String, Double>				  minChimpumOfArtefactByCurrency;
 		
 		final String[] acceptedCurrencies = this.repository.getAcceptedCurrencies().split(",");
 		final List<String> currencies = new ArrayList<>();
@@ -154,6 +160,28 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 				);
 		}
 		
+		ratioOfArtefactsWithChimpum = this.repository.ratioOfArtefactsWithChimpum(ItemType.TOOL);
+		
+		averageChimpumOfArtefactByCurrency = new HashMap<String, Double>();
+		for(int i=0; i<currencies.size(); i++) {
+			averageChimpumOfArtefactByCurrency.put(currencies.get(i), this.repository.averageChimpumOfArtefactByCurrency(currencies.get(i)));
+		}
+		
+		deviationChimpumOfArtefactByCurrency = new HashMap<String, Double>();
+		for(int i=0; i<currencies.size(); i++) {
+			deviationChimpumOfArtefactByCurrency.put(currencies.get(i), this.repository.deviationChimpumOfArtefactByCurrency(currencies.get(i)));
+		}
+		
+		maxChimpumOfArtefactByCurrency = new HashMap<String, Double>();
+		for(int i=0; i<currencies.size(); i++) {
+			maxChimpumOfArtefactByCurrency.put(currencies.get(i), this.repository.maxChimpumOfArtefactByCurrency(currencies.get(i)));
+		}
+		
+		minChimpumOfArtefactByCurrency = new HashMap<String, Double>();
+		for(int i=0; i<currencies.size(); i++) {
+			minChimpumOfArtefactByCurrency.put(currencies.get(i), this.repository.minChimpumOfArtefactByCurrency(currencies.get(i)));
+		}
+		
 		result.setNumberOfComponents(numberOfComponents);
 		result.setAverageRetailPriceOfComponentsByTechnologyAndCurrency(averageRetailPriceOfComponentsByTechnologyAndCurrency);
 		result.setDeviationRetailPriceOfComponentsByTechnologyAndCurrency(deviationRetailPriceOfComponentsByTechnologyAndCurrency);
@@ -169,6 +197,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setDeviationBudgetOfPatronagesByStatus(deviationBudgetOfPatronagesByStatus);
 		result.setMinBudgetOfPatronagesByStatus(minBudgetOfPatronagesByStatus);
 		result.setMaxBudgetOfPatronagesByStatus(maxBudgetOfPatronagesByStatus);
+		result.setRatioOfArtefactsWithChimpum(ratioOfArtefactsWithChimpum);
+		result.setAverageChimpumOfArtefactByCurrency(averageChimpumOfArtefactByCurrency);
+		result.setDeviationChimpumOfArtefactByCurrency(deviationChimpumOfArtefactByCurrency);
+		result.setMaxChimpumOfArtefactByCurrency(maxChimpumOfArtefactByCurrency);
+		result.setMinChimpumOfArtefactByCurrency(minChimpumOfArtefactByCurrency);
 		
 		return result;
 	}
@@ -188,7 +221,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			"deviationRetailPriceOfToolsByCurrency", "minRetailPriceOfToolsByCurrency", //
 			"maxRetailPriceOfToolsByCurrency", "numberOfPatronagesByStatus", //
 			"averageBudgetOfPatronagesByStatus", "deviationBudgetOfPatronagesByStatus", //
-			"minBudgetOfPatronagesByStatus", "maxBudgetOfPatronagesByStatus");
+			"minBudgetOfPatronagesByStatus", "maxBudgetOfPatronagesByStatus",
+			"ratioOfArtefactsWithChimpum", "averageChimpumOfArtefactByCurrency",
+			"deviationChimpumOfArtefactByCurrency", "maxChimpumOfArtefactByCurrency",
+			"minChimpumOfArtefactByCurrency");
 		
 		this.library.createDashboard(entity, model);
 		

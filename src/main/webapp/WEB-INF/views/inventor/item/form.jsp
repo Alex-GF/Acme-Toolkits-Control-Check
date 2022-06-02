@@ -24,9 +24,22 @@
 	<acme:input-textbox code="any.item.form.label.published" path="published"/>
 		
 	<acme:input-select code="any.item.form.label.type" path="type">
-		<acme:input-option code="TOOL" value="TOOL" selected="${status == 'TOOL'}"/>
-		<acme:input-option code="COMPONENT" value="COMPONENT" selected="${status == 'COMPONENT'}"/>
+		<acme:input-option code="TOOL" value="TOOL" selected="${type == 'TOOL'}"/>
+		<acme:input-option code="COMPONENT" value="COMPONENT" selected="${type == 'COMPONENT'}"/>
 	</acme:input-select>
+	
+	<jstl:if test="${isTool}">
+		
+		<jstl:choose>
+			<jstl:when test="${showChimpum}">
+				<acme:button code="inventor.item.form.button.chimpumShow" action="/inventor/chimpum/show?id=${chimpumId}"/>		
+			</jstl:when>
+			<jstl:otherwise>
+				<acme:button code="inventor.item.form.button.chimpumCreate" action="/inventor/chimpum/create?itemId=${id}"/>
+			</jstl:otherwise>
+		</jstl:choose>
+	
+	</jstl:if>
 
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete') && published == false}">

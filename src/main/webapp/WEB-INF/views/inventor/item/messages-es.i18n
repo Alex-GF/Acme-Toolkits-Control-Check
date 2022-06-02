@@ -14,3 +14,5 @@ inventor.item.form.button.publish = Publicar
 inventor.item.form.error.acceptedCurrency = Divisa no aceptada
 inventor.item.form.error.positiveValue = La cantidad debe ser positivo
 inventor.item.form.error.spamWord = No puede contener palabras inapropiadas
+inventor.item.form.button.chimpumCreate = Añadir chimpum
+inventor.item.form.button.chimpumShow = Ver chimpum

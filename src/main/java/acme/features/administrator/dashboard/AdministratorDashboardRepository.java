@@ -7,6 +7,7 @@ import javax.persistence.Tuple;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.item.ItemType;
 import acme.entities.patronage.Status;
 import acme.framework.repositories.AbstractRepository;
 
@@ -61,6 +62,23 @@ public interface AdministratorDashboardRepository extends AbstractRepository{
 	
 	@Query("SELECT MAX(p.budget.amount) FROM Patronage p WHERE p.status = :status")
 	Double maxBudgetOfPatronagesByStatus(Status status);
+	
+	// Chimpum
+	
+	@Query("SELECT (("+ "SELECT COUNT(c) FROM Chimpum c" + ")/COUNT(i))*100 FROM Item i WHERE i.type = :type")
+	Double ratioOfArtefactsWithChimpum(ItemType type);
+	
+	@Query("SELECT AVG(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double averageChimpumOfArtefactByCurrency(String currency);
+	
+	@Query("SELECT STDDEV(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double deviationChimpumOfArtefactByCurrency(String currency);
+	
+	@Query("SELECT MAX(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double maxChimpumOfArtefactByCurrency(String currency);
+	
+	@Query("SELECT MIN(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double minChimpumOfArtefactByCurrency(String currency);
 	
 }
 

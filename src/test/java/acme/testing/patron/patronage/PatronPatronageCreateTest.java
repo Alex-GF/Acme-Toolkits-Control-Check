@@ -77,8 +77,6 @@ public class PatronPatronageCreateTest extends TestHarness {
 		super.clickOnMenu("Patron", "Patronage list");
 		super.checkListingExists();
 		
-		final LocalDateTime now =LocalDateTime.now();
-        final String date = now.getYear()+"/"+(now.getMonthValue() < 10 ? "0"+ now.getMonthValue():now.getMonthValue())+"/"+now.getDayOfMonth()+" "+now.getHour()+":"+(now.getMinute() < 10 ? "0"+ now.getMinute():now.getMinute());
 		super.clickOnButton("Create");
 		super.fillInputBoxIn("legalStuff", legalStuff);
 		super.fillInputBoxIn("budget", budget);

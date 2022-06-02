@@ -54,11 +54,6 @@ public class InventorPatronageReportCreateTest extends TestHarness {
 
         super.clickOnMenu("Inventor", "Patronage report list");
         super.clickOnButton("Create");
-        final LocalDateTime now = LocalDateTime.now();
-        final String date = now.getYear() + "/"
-                + (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) + "/"
-                + now.getDayOfMonth() + " " + now.getHour() + ":"
-                + (now.getMinute() < 10 ? "0" + now.getMinute() : now.getMinute());
         super.fillInputBoxIn("memorandum", memorandum);
         super.fillInputBoxIn("link", link);
         super.fillInputBoxIn("confirmation", "true");
