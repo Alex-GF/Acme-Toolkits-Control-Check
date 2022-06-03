@@ -1,4 +1,4 @@
-package acme.testing.inventor.chimpum;
+package acme.testing.inventor.rustoro;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -7,10 +7,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class InventorChimpumListTest extends TestHarness{
+public class InventorRustoroListTest extends TestHarness{
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/chimpum/list.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/inventor/rustoro/list.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positive(final int recordIndex, final String code, final String title, 
 						final String description,  final String creationMoment,
@@ -19,7 +19,7 @@ public class InventorChimpumListTest extends TestHarness{
 		
 		super.signIn("inventor1", "inventor1");
 
-		super.clickOnMenu("Inventor", "Chimpum list");
+		super.clickOnMenu("Inventor", "Rustoro list");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, code);
@@ -51,7 +51,7 @@ public class InventorChimpumListTest extends TestHarness{
     public void hackingTest() {
 
 		super.checkNotLinkExists("Account");
-		super.navigate("/inventor/chimpum/list");
+		super.navigate("/inventor/rustoro/list");
 		super.checkPanicExists();
 
 		super.signIn("patron2", "patron2");
@@ -65,7 +65,7 @@ public class InventorChimpumListTest extends TestHarness{
 		super.signOut();
 		
 		// También se ha probado acceder a un item con un inventor que no es su dueño, para intentar a acceder
-		// a un chimpum que no corresponde. En efecto, salta un error que indica la falta de permisos para
+		// a un rustoro que no corresponde. En efecto, salta un error que indica la falta de permisos para
 		// acceder.
     	
     }

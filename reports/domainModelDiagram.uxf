@@ -455,11 +455,11 @@ AdministratorDashboard
 + deviationBudgetOfPatronagesByStatus: Map&lt;Status,Double&gt;
 + minBudgetOfPatronagesByStatus: Map&lt;Status,Double&gt;
 + maxBudgetOfPatronagesByStatus: Map&lt;Status,Double&gt;
-+ ratioOfArtefactsWithChimpum: double
-+ averageChimpumOfArtefactByCurrency: Map&lt;String, Double&gt;
-+ desviationChimpumOfArtefactByCurrency: Map&lt;String, Double&gt;
-+ maxChimpumOfArtefactByCurrency: Map&lt;String, Double&gt;
-+ minChimpumOfArtefactByCurrency: Map&lt;String, Double&gt;</panel_attributes>
++ ratioOfArtefactsWithRustoro: double
++ averageRustoroOfArtefactByCurrency: Map&lt;String, Double&gt;
++ desviationRustoroOfArtefactByCurrency: Map&lt;String, Double&gt;
++ maxRustoroOfArtefactByCurrency: Map&lt;String, Double&gt;
++ minRustoroOfArtefactByCurrency: Map&lt;String, Double&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -803,7 +803,7 @@ m2=1
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
-Chimpum
+Rustoro
 --
 
 + code: String {NotBlank, Pattern("^[0-9]{2}[0-1]{1}[0-9]{1}[0-3]{1}[0-9]{1}-[A-Z]{3}(-[0-9])?$")}

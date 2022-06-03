@@ -1,11 +1,11 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.rustoro;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.rustoro.Rustoro;
 import acme.entities.item.Item;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
@@ -15,12 +15,12 @@ import acme.roles.Inventor;
 import acme.utils.ChangeCurrencyLibrary;
 
 @Service
-public class InventorListChimpumService implements AbstractListService<Inventor, Chimpum>{
+public class InventorListRustoroService implements AbstractListService<Inventor, Rustoro>{
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorChimpumRepository inventorChimpumRepository;
+	protected InventorRustoroRepository inventorRustoroRepository;
 	
 	@Autowired
 	protected InventorItemRepository invetorItemRepository;
@@ -32,7 +32,7 @@ public class InventorListChimpumService implements AbstractListService<Inventor,
 
 
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Rustoro> request) {
 		assert request != null;
 
 		boolean result;
@@ -43,12 +43,12 @@ public class InventorListChimpumService implements AbstractListService<Inventor,
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Rustoro> request, final Rustoro entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		final Item i = this.inventorChimpumRepository.findItemByChimpumId(entity.getId());
+		final Item i = this.inventorRustoroRepository.findItemByRustoroId(entity.getId());
 		
 		request.unbind(entity, model, "code", "title", "budget");
 		model.setAttribute("itemName", i.getName());
@@ -56,12 +56,12 @@ public class InventorListChimpumService implements AbstractListService<Inventor,
 	}
 
 	@Override
-	public Collection<Chimpum> findMany(final Request<Chimpum> request) {
+	public Collection<Rustoro> findMany(final Request<Rustoro> request) {
 		assert request != null;
 
-		final Collection<Chimpum> result;
+		final Collection<Rustoro> result;
 
-		result = this.inventorChimpumRepository.findAllMine(request.getPrincipal().getAccountId());
+		result = this.inventorRustoroRepository.findAllMine(request.getPrincipal().getAccountId());
 		
 		final String defaultCurrency = this.invetorItemRepository.findDefaultCurrency();
 		

@@ -3,7 +3,7 @@ package acme.features.inventor.item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.rustoro.Rustoro;
 import acme.entities.item.Item;
 import acme.entities.item.ItemType;
 import acme.framework.components.models.Model;
@@ -84,16 +84,16 @@ public class InventorShowItemService implements AbstractShowService<Inventor,Ite
 		if(item.getType().equals(ItemType.TOOL)) {
 			model.setAttribute("isTool", true);
 			
-			final Item chimpumItem = this.inventorItemRepository.itemWhithoutChimpum(item.getId());
+			final Item rustoroItem = this.inventorItemRepository.itemWhithoutRustoro(item.getId());
 			
-			if(chimpumItem != null) {
-				model.setAttribute("showChimpum", true);
+			if(rustoroItem != null) {
+				model.setAttribute("showRustoro", true);
 				
-				final Chimpum chimpum = this.inventorItemRepository.findChimpumByItemId(chimpumItem.getId());
-				model.setAttribute("chimpumId", chimpum.getId());
+				final Rustoro rustoro = this.inventorItemRepository.findRustoroByItemId(rustoroItem.getId());
+				model.setAttribute("rustoroId", rustoro.getId());
 				
 			}else {
-				model.setAttribute("showChimpum", false);
+				model.setAttribute("showRustoro", false);
 			}
 			
 		}

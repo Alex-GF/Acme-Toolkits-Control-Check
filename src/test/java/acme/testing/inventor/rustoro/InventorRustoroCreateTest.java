@@ -1,4 +1,4 @@
-package acme.testing.inventor.chimpum;
+package acme.testing.inventor.rustoro;
 
 import java.time.LocalDateTime;
 
@@ -9,10 +9,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class InventorChimpumCreateTest extends TestHarness {
+public class InventorRustoroCreateTest extends TestHarness {
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/inventor/chimpum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/inventor/rustoro/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
     @Order(10)
     public void positive(final int recordIndex, final String title, final String description, final String startDate, final String finishDate, final String budget, final String link, final String item, final int itemIndex) {
         super.signIn("inventor1", "inventor1");
@@ -23,7 +23,7 @@ public class InventorChimpumCreateTest extends TestHarness {
         
         super.clickOnListingRecord(itemIndex);
         
-		super.clickOnButton("Add chimpum");
+		super.clickOnButton("Add rustoro");
 
         final LocalDateTime now = LocalDateTime.now();
         final String date = now.getYear() + "/"
@@ -45,7 +45,7 @@ public class InventorChimpumCreateTest extends TestHarness {
         super.fillInputBoxIn("link", link);
         super.clickOnSubmit("Create");
 
-        super.clickOnMenu("Inventor", "Chimpum list");
+        super.clickOnMenu("Inventor", "Rustoro list");
         super.checkListingExists();
         super.sortListing(0, "asc");
         super.checkColumnHasValue(recordIndex, 1, title);
@@ -67,7 +67,7 @@ public class InventorChimpumCreateTest extends TestHarness {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/inventor/chimpum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/inventor/rustoro/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
     @Order(20)
     public void negative(final int recordIndex,final String fakeCode, final String title, final String description, final String startDate, final String finishDate, final String budget, final String link, final int itemIndex) {
         super.signIn("inventor1", "inventor1");
@@ -78,7 +78,7 @@ public class InventorChimpumCreateTest extends TestHarness {
         
         super.clickOnListingRecord(itemIndex);
         
-		super.clickOnButton("Add chimpum");
+		super.clickOnButton("Add rustoro");
 		
 		String code = fakeCode;
 		
@@ -108,10 +108,10 @@ public class InventorChimpumCreateTest extends TestHarness {
     @Order(30)
     public void hackingTest() {
 
-        //Se ha comprobado a intentar entrar en el formulario de crear Chimpum
+        //Se ha comprobado a intentar entrar en el formulario de crear Rustoro
     	//desde usuarios tipo Any, Patron y Administrator.
-    	//También se ha intentado entrar en el formulario de crear Chimpum
-    	//desde un inventor que haya creado un item con un Chimpum asociado.
+    	//También se ha intentado entrar en el formulario de crear Rustoro
+    	//desde un inventor que haya creado un item con un Rustoro asociado.
     	
     }
 }

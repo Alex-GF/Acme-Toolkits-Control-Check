@@ -1,0 +1,25 @@
+inventor.rustoro.list.label.code = Code
+inventor.rustoro.list.label.title = Title
+inventor.rustoro.list.label.budget = Budget
+inventor.rustoro.list.label.itemName = Item
+
+inventor.rustoro.form.label.code = Code
+inventor.rustoro.form.label.title = Title
+inventor.rustoro.form.label.description = Description
+inventor.rustoro.form.label.creationMoment = Creation Moment
+inventor.rustoro.form.label.startDate = Start Date
+inventor.rustoro.form.label.finishDate = Finish Date
+inventor.rustoro.form.label.budget = Budget
+inventor.rustoro.form.label.link = Link
+inventor.rustoro.form.button.update = Update
+inventor.rustoro.form.button.delete = Delete
+inventor.rustoro.form.button.create = Create
+inventor.rustoro.form.button.item = Item
+inventor.rustoro.form.label.itemName = Item
+
+inventor.rustoro.form.error.spamWord = The text may not contain spam words
+inventor.rustoro.form.error.acceptedCurrency = The chosen currency is not handled by the system
+inventor.rustoro.form.error.positiveValue = The amount must be positive
+inventor.rustoro.form.error.acceptedPeriodTime.start = The start date must be, at least, one month after the creation moment
+inventor.rustoro.form.error.acceptedPeriodTime.finish = The finish date must be, at least, one week after the creation moment
+inventor.rustoro.form.error.invalidCode = The date of the code must match with the creation moment

@@ -1,4 +1,4 @@
-package acme.entities.chimpum;
+package acme.entities.rustoro;
 
 import java.util.Date;
 
@@ -24,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Chimpum extends AbstractEntity{
+public class Rustoro extends AbstractEntity{
 	
 	// Serialisation identifier -----------------------------------------------
 

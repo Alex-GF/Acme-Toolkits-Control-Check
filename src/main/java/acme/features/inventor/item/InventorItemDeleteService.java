@@ -3,7 +3,7 @@ package acme.features.inventor.item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.rustoro.Rustoro;
 import acme.entities.item.Item;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -78,11 +78,11 @@ public class InventorItemDeleteService implements AbstractDeleteService<Inventor
 		assert request != null;
 		assert entity != null;
 		
-		final Chimpum chimpum = this.inventorItemRepository.findChimpumByItemId(entity.getId());
+		final Rustoro rustoro = this.inventorItemRepository.findRustoroByItemId(entity.getId());
 		
-		if (chimpum != null) {
+		if (rustoro != null) {
 			
-			this.inventorItemRepository.delete(chimpum);
+			this.inventorItemRepository.delete(rustoro);
 		}
 		
 		this.inventorItemRepository.delete(entity);

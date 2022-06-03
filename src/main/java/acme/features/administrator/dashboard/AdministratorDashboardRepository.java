@@ -63,22 +63,22 @@ public interface AdministratorDashboardRepository extends AbstractRepository{
 	@Query("SELECT MAX(p.budget.amount) FROM Patronage p WHERE p.status = :status")
 	Double maxBudgetOfPatronagesByStatus(Status status);
 	
-	// Chimpum
+	// Rustoro
 	
-	@Query("SELECT (("+ "SELECT COUNT(c) FROM Chimpum c" + ")/COUNT(i))*100 FROM Item i WHERE i.type = :type")
-	Double ratioOfArtefactsWithChimpum(ItemType type);
+	@Query("SELECT (("+ "SELECT COUNT(c) FROM Rustoro c" + ")/COUNT(i))*100 FROM Item i WHERE i.type = :type")
+	Double ratioOfArtefactsWithRustoro(ItemType type);
 	
-	@Query("SELECT AVG(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
-	Double averageChimpumOfArtefactByCurrency(String currency);
+	@Query("SELECT AVG(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	Double averageRustoroOfArtefactByCurrency(String currency);
 	
-	@Query("SELECT STDDEV(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
-	Double deviationChimpumOfArtefactByCurrency(String currency);
+	@Query("SELECT STDDEV(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	Double deviationRustoroOfArtefactByCurrency(String currency);
 	
-	@Query("SELECT MAX(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
-	Double maxChimpumOfArtefactByCurrency(String currency);
+	@Query("SELECT MAX(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	Double maxRustoroOfArtefactByCurrency(String currency);
 	
-	@Query("SELECT MIN(c.budget.amount) FROM Chimpum c WHERE c.budget.currency = :currency")
-	Double minChimpumOfArtefactByCurrency(String currency);
+	@Query("SELECT MIN(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	Double minRustoroOfArtefactByCurrency(String currency);
 	
 }
 

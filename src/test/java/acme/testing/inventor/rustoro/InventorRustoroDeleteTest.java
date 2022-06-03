@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.testing.inventor.chimpum;
+package acme.testing.inventor.rustoro;
 
 import java.time.LocalDateTime;
 
@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import acme.testing.TestHarness;
 
-public class InventorChimpumDeleteTest extends TestHarness {
+public class InventorRustoroDeleteTest extends TestHarness {
 
 	private final Integer RECORD_INDEX_CHIMPUM_PRUEBA = 0;
 	private final Integer RECORD_INDEX_ITEM_PRUEBA = 4;
@@ -43,7 +43,7 @@ public class InventorChimpumDeleteTest extends TestHarness {
 			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ "-ABC";
 
 
-		super.clickOnButton("Add chimpum");
+		super.clickOnButton("Add rustoro");
 		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("title", "AA DELETE TEST CHIMPUM");
 		super.fillInputBoxIn("description", "Descripción del delete test");
@@ -51,8 +51,8 @@ public class InventorChimpumDeleteTest extends TestHarness {
 		
 		final LocalDateTime start = now.plusMonths(2);
 		final LocalDateTime finish = start.plusWeeks(2);
-        final String startDate = InventorChimpumDeleteTest.stringDate(start);
-        final String finishDate = InventorChimpumDeleteTest.stringDate(finish);
+        final String startDate = InventorRustoroDeleteTest.stringDate(start);
+        final String finishDate = InventorRustoroDeleteTest.stringDate(finish);
         
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("finishDate", finishDate);
@@ -71,7 +71,7 @@ public class InventorChimpumDeleteTest extends TestHarness {
 	public void positiveTest() {
 		super.signIn("inventor1", "inventor1");
 
-		super.clickOnMenu("Inventor", "Chimpum list");
+		super.clickOnMenu("Inventor", "Rustoro list");
 		super.checkListingExists();
 		super.sortListing(1, "asc");
 		super.checkColumnHasValue(this.RECORD_INDEX_CHIMPUM_PRUEBA, 1, "AA DELETE TEST CHIMPUM");
@@ -89,7 +89,7 @@ public class InventorChimpumDeleteTest extends TestHarness {
 	public void hackingTest() {
 		// SUGERENCIA: el framework no proporciona suficiente soporte para implementar este caso de hacking,
 		// SUGERENCIA+ por lo que debe realizarse manualmente:
-		// SUGERENCIA+ a) No se puede borrar un chimpum con un inventor que no sea su propietario.
+		// SUGERENCIA+ a) No se puede borrar un rustoro con un inventor que no sea su propietario.
 		
 	}
 

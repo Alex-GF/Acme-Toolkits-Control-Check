@@ -1,9 +1,9 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.rustoro;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.rustoro.Rustoro;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -12,29 +12,29 @@ import acme.framework.services.AbstractDeleteService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorChimpumDeleteService implements AbstractDeleteService<Inventor, Chimpum>{
+public class InventorRustoroDeleteService implements AbstractDeleteService<Inventor, Rustoro>{
 	
 	@Autowired
-	protected InventorChimpumRepository inventorChimpumRepository;
+	protected InventorRustoroRepository inventorRustoroRepository;
 	
 	@Autowired
 	protected InventorItemRepository inventorItemRepository;
 
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Rustoro> request) {
 		
 		assert request != null;
 		
 		boolean result;
 		
-		final int chimpumId;
-		final Chimpum chimpum;
+		final int rustoroId;
+		final Rustoro rustoro;
 		final Inventor inventor;
 		
-		chimpumId = request.getModel().getInteger("id");
-		chimpum = this.inventorChimpumRepository.findChimpumById(chimpumId);
+		rustoroId = request.getModel().getInteger("id");
+		rustoro = this.inventorRustoroRepository.findRustoroById(rustoroId);
 		
-		inventor = chimpum.getItem().getInventor();
+		inventor = rustoro.getItem().getInventor();
 		
 		result = request.isPrincipal(inventor);
 		
@@ -42,7 +42,7 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Rustoro> request, final Rustoro entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -51,7 +51,7 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Rustoro> request, final Rustoro entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -60,20 +60,20 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public Chimpum findOne(final Request<Chimpum> request) {
+	public Rustoro findOne(final Request<Rustoro> request) {
 		assert request != null;
 		
-		Chimpum result;
-		int chimpumId;
+		Rustoro result;
+		int rustoroId;
 		
-		chimpumId = request.getModel().getInteger("id");
-		result = this.inventorChimpumRepository.findChimpumById(chimpumId);
+		rustoroId = request.getModel().getInteger("id");
+		result = this.inventorRustoroRepository.findRustoroById(rustoroId);
 		
 		return result;
 	}
 
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Rustoro> request, final Rustoro entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -82,11 +82,11 @@ public class InventorChimpumDeleteService implements AbstractDeleteService<Inven
 	}
 
 	@Override
-	public void delete(final Request<Chimpum> request, final Chimpum entity) {
+	public void delete(final Request<Rustoro> request, final Rustoro entity) {
 		assert request != null;
 		assert entity != null;
 		
-		this.inventorChimpumRepository.delete(entity);
+		this.inventorRustoroRepository.delete(entity);
 		
 	}
 	

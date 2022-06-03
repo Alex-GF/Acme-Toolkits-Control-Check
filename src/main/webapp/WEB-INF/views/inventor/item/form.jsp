@@ -31,11 +31,11 @@
 	<jstl:if test="${isTool}">
 		
 		<jstl:choose>
-			<jstl:when test="${showChimpum}">
-				<acme:button code="inventor.item.form.button.chimpumShow" action="/inventor/chimpum/show?id=${chimpumId}"/>		
+			<jstl:when test="${showRustoro}">
+				<acme:button code="inventor.item.form.button.rustoroShow" action="/inventor/rustoro/show?id=${rustoroId}"/>		
 			</jstl:when>
 			<jstl:otherwise>
-				<acme:button code="inventor.item.form.button.chimpumCreate" action="/inventor/chimpum/create?itemId=${id}"/>
+				<acme:button code="inventor.item.form.button.rustoroCreate" action="/inventor/rustoro/create?itemId=${id}"/>
 			</jstl:otherwise>
 		</jstl:choose>
 	

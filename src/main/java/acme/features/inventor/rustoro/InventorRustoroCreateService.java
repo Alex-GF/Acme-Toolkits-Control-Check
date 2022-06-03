@@ -1,4 +1,4 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.rustoro;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.rustoro.Rustoro;
 import acme.entities.configuration.Configuration;
 import acme.entities.item.Item;
 import acme.features.inventor.item.InventorItemRepository;
@@ -21,16 +21,16 @@ import acme.utils.AcceptedCurrencyLibrary;
 import main.AntiSpam;
 
 @Service
-public class InventorChimpumCreateService implements AbstractCreateService<Inventor, Chimpum>{
+public class InventorRustoroCreateService implements AbstractCreateService<Inventor, Rustoro>{
 	
 	@Autowired
-	protected InventorChimpumRepository repository;
+	protected InventorRustoroRepository repository;
 	
 	@Autowired
 	protected InventorItemRepository inventorItemRepository;
 
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Rustoro> request) {
 		assert request != null;
 		
 		boolean result;
@@ -44,13 +44,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		inventor = item.getInventor();
 		
-		result = request.isPrincipal(inventor) && this.repository.findChimpumByItemId(itemId)==null;
+		result = request.isPrincipal(inventor) && this.repository.findRustoroByItemId(itemId)==null;
 		
 		return result;
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Rustoro> request, final Rustoro entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -61,7 +61,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Rustoro> request, final Rustoro entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -73,7 +73,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	}
 
 	@Override
-	public Chimpum instantiate(final Request<Chimpum> request) {
+	public Rustoro instantiate(final Request<Rustoro> request) {
 		assert request != null;
 		
 		int itemId;
@@ -83,7 +83,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		item = this.repository.findItemByItemId(itemId);
 		
-		final Chimpum result = new Chimpum();
+		final Rustoro result = new Rustoro();
 		
 		result.setCreationMoment(new Date());
 		
@@ -93,7 +93,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	}
 
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Rustoro> request, final Rustoro entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -106,11 +106,11 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		final Configuration configuration = this.inventorItemRepository.configuration();
 		final AntiSpam antiSpam = new AntiSpam(configuration.getStrongSpamWords(), configuration.getStrongSpamThreshold(), configuration.getWeakSpamWords(), configuration.getWeakSpamThreshold(), entity.getDescription());
 		spamWord = antiSpam.getAvoidSpam();
-		errors.state(request, !spamWord, "description", "inventor.chimpum.form.error.spamWord");
+		errors.state(request, !spamWord, "description", "inventor.rustoro.form.error.spamWord");
 		
 		final AntiSpam antiSpamTitle = new AntiSpam(configuration.getStrongSpamWords(), configuration.getStrongSpamThreshold(), configuration.getWeakSpamWords(), configuration.getWeakSpamThreshold(), entity.getTitle());
 		spamWordTitle = antiSpamTitle.getAvoidSpam();
-		errors.state(request, !spamWordTitle, "title", "inventor.chimpum.form.error.spamWord");
+		errors.state(request, !spamWordTitle, "title", "inventor.rustoro.form.error.spamWord");
 		
 		if(!(request.getModel().hasAttribute("defaultCurrency"))){
 			
@@ -119,13 +119,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 				
 				acceptedCurrency = acceptedCurrencies.contains(entity.getBudget().getCurrency());
 				
-				errors.state(request, acceptedCurrency, "budget", "inventor.chimpum.form.error.acceptedCurrency");
+				errors.state(request, acceptedCurrency, "budget", "inventor.rustoro.form.error.acceptedCurrency");
 				
 				boolean positiveValue;
 				
 				positiveValue = entity.getBudget().getAmount()>0;
 				
-				errors.state(request, positiveValue, "budget", "inventor.chimpum.form.error.positiveValue");
+				errors.state(request, positiveValue, "budget", "inventor.rustoro.form.error.positiveValue");
 			}
 			
 		}else {
@@ -135,13 +135,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 				
 				acceptedCurrency = acceptedCurrencies.contains(entity.getBudget().getCurrency());
 				
-				errors.state(request, acceptedCurrency, "defaultCurrency", "inventor.chimpum.form.error.acceptedCurrency");
+				errors.state(request, acceptedCurrency, "defaultCurrency", "inventor.rustoro.form.error.acceptedCurrency");
 				
 				boolean positiveValue;
 				
 				positiveValue = entity.getBudget().getAmount()>0;
 				
-				errors.state(request, positiveValue, "defaultCurrency", "inventor.chimpum.form.error.positiveValue");
+				errors.state(request, positiveValue, "defaultCurrency", "inventor.rustoro.form.error.positiveValue");
 			}
 			
 		}
@@ -156,7 +156,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			minimumPeriodStart = calendar.getTime();
 			
 			
-			errors.state(request, entity.getStartDate().after(minimumPeriodStart), "startDate", "inventor.chimpum.form.error.acceptedPeriodTime.start");
+			errors.state(request, entity.getStartDate().after(minimumPeriodStart), "startDate", "inventor.rustoro.form.error.acceptedPeriodTime.start");
 			
 		}
 		
@@ -170,7 +170,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			minimumPeriodFinish = calendar.getTime();
 			
 			
-			errors.state(request, entity.getFinishDate().after(minimumPeriodFinish), "finishDate", "inventor.chimpum.form.error.acceptedPeriodTime.finish");
+			errors.state(request, entity.getFinishDate().after(minimumPeriodFinish), "finishDate", "inventor.rustoro.form.error.acceptedPeriodTime.finish");
 		}
 		
 		if (!errors.hasErrors("code")) {
@@ -200,14 +200,14 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			final String codeMonth = entity.getCode().split("-")[0].substring(2,4);
 			final String codeDay = entity.getCode().split("-")[0].substring(4,6);
 			
-			errors.state(request, codeYear.equals(yearString) && codeMonth.equals(monthString) && codeDay.equals(dayString) , "code", "inventor.chimpum.form.error.invalidCode");
+			errors.state(request, codeYear.equals(yearString) && codeMonth.equals(monthString) && codeDay.equals(dayString) , "code", "inventor.rustoro.form.error.invalidCode");
 			
 		}
 		
 	}
 
 	@Override
-	public void create(final Request<Chimpum> request, final Chimpum entity) {
+	public void create(final Request<Rustoro> request, final Rustoro entity) {
 		assert request != null;
 		assert entity != null;
 				

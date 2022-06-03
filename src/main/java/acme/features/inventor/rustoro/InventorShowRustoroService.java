@@ -1,9 +1,9 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.rustoro;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.rustoro.Rustoro;
 import acme.entities.item.Item;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
@@ -13,12 +13,12 @@ import acme.roles.Inventor;
 import acme.utils.ChangeCurrencyLibrary;
 
 @Service
-public class InventorShowChimpumService implements AbstractShowService<Inventor,Chimpum> {
+public class InventorShowRustoroService implements AbstractShowService<Inventor,Rustoro> {
 	
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorChimpumRepository inventorChimpumRepository;
+	protected InventorRustoroRepository inventorRustoroRepository;
 	
 	@Autowired
 	protected InventorItemRepository inventorItemRepository;
@@ -30,7 +30,7 @@ public class InventorShowChimpumService implements AbstractShowService<Inventor,
 
 
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Rustoro> request) {
 		assert request != null;
 		
 		boolean result;
@@ -41,16 +41,16 @@ public class InventorShowChimpumService implements AbstractShowService<Inventor,
 	}
 
 	@Override
-	public Chimpum findOne(final Request<Chimpum> request) {
+	public Rustoro findOne(final Request<Rustoro> request) {
 		assert request != null;
 
-		Chimpum result;
-		final int chimpumId;
+		Rustoro result;
+		final int rustoroId;
 
-		chimpumId = request.getModel().getInteger("id");
+		rustoroId = request.getModel().getInteger("id");
 		
 		//itemId = request.getModel().getInteger("itemId");
-		result = this.inventorChimpumRepository.findChimpumById(chimpumId);
+		result = this.inventorRustoroRepository.findRustoroById(rustoroId);
 		
 		final String defaultCurrency = this.inventorItemRepository.findDefaultCurrency();
 		
@@ -62,23 +62,23 @@ public class InventorShowChimpumService implements AbstractShowService<Inventor,
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Rustoro> request, final Rustoro entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		final Item i = this.inventorChimpumRepository.findItemByChimpumId(entity.getId());
+		final Item i = this.inventorRustoroRepository.findItemByRustoroId(entity.getId());
 		
 		request.unbind(entity, model, "code", "title", "description", "creationMoment", "startDate", "finishDate", "budget", "link");
 		model.setAttribute("itemName", i.getName());
 		
 		final String defaultCurrency = this.inventorItemRepository.findDefaultCurrency();
 		
-		final Chimpum chimpum = this.inventorChimpumRepository.findChimpumById(entity.getId());
+		final Rustoro rustoro = this.inventorRustoroRepository.findRustoroById(entity.getId());
 		
-		if(!(chimpum.getBudget().getCurrency().equals(defaultCurrency))) {
+		if(!(rustoro.getBudget().getCurrency().equals(defaultCurrency))) {
 			model.setAttribute("showDefaultCurrency", true);
-			model.setAttribute("defaultCurrency",chimpum.getBudget());
+			model.setAttribute("defaultCurrency",rustoro.getBudget());
 		}
 		
 	}
