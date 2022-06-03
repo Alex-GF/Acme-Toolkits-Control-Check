@@ -65,19 +65,19 @@ public interface AdministratorDashboardRepository extends AbstractRepository{
 	
 	// Rustoro
 	
-	@Query("SELECT (("+ "SELECT COUNT(c) FROM Rustoro c" + ")/COUNT(i))*100 FROM Item i WHERE i.type = :type")
+	@Query("SELECT (("+ "SELECT COUNT(r) FROM Rustoro r" + ")/COUNT(i))*100 FROM Item i WHERE i.type = :type")
 	Double ratioOfArtefactsWithRustoro(ItemType type);
 	
-	@Query("SELECT AVG(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	@Query("SELECT AVG(r.quota.amount) FROM Rustoro r WHERE r.quota.currency = :currency")
 	Double averageRustoroOfArtefactByCurrency(String currency);
 	
-	@Query("SELECT STDDEV(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	@Query("SELECT STDDEV(r.quota.amount) FROM Rustoro r WHERE r.quota.currency = :currency")
 	Double deviationRustoroOfArtefactByCurrency(String currency);
 	
-	@Query("SELECT MAX(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	@Query("SELECT MAX(r.quota.amount) FROM Rustoro r WHERE r.quota.currency = :currency")
 	Double maxRustoroOfArtefactByCurrency(String currency);
 	
-	@Query("SELECT MIN(c.budget.amount) FROM Rustoro c WHERE c.budget.currency = :currency")
+	@Query("SELECT MIN(r.quota.amount) FROM Rustoro r WHERE r.quota.currency = :currency")
 	Double minRustoroOfArtefactByCurrency(String currency);
 	
 }

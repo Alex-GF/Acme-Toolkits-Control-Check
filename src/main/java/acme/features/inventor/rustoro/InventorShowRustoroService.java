@@ -3,8 +3,8 @@ package acme.features.inventor.rustoro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.rustoro.Rustoro;
 import acme.entities.item.Item;
+import acme.entities.rustoro.Rustoro;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
@@ -54,8 +54,8 @@ public class InventorShowRustoroService implements AbstractShowService<Inventor,
 		
 		final String defaultCurrency = this.inventorItemRepository.findDefaultCurrency();
 		
-		if(!(result.getBudget().getCurrency().equals(defaultCurrency))){
-			result.setBudget(this.changeLibrary.computeMoneyExchange(result.getBudget(), defaultCurrency).getTarget());
+		if(!(result.getQuota().getCurrency().equals(defaultCurrency))){
+			result.setQuota(this.changeLibrary.computeMoneyExchange(result.getQuota(), defaultCurrency).getTarget());
 		}
 
 		return result;
@@ -69,16 +69,16 @@ public class InventorShowRustoroService implements AbstractShowService<Inventor,
 
 		final Item i = this.inventorRustoroRepository.findItemByRustoroId(entity.getId());
 		
-		request.unbind(entity, model, "code", "title", "description", "creationMoment", "startDate", "finishDate", "budget", "link");
+		request.unbind(entity, model, "code", "name", "explanation", "creationMoment", "startDate", "finishDate", "quota", "moreInfo");
 		model.setAttribute("itemName", i.getName());
 		
 		final String defaultCurrency = this.inventorItemRepository.findDefaultCurrency();
 		
 		final Rustoro rustoro = this.inventorRustoroRepository.findRustoroById(entity.getId());
 		
-		if(!(rustoro.getBudget().getCurrency().equals(defaultCurrency))) {
+		if(!(rustoro.getQuota().getCurrency().equals(defaultCurrency))) {
 			model.setAttribute("showDefaultCurrency", true);
-			model.setAttribute("defaultCurrency",rustoro.getBudget());
+			model.setAttribute("defaultCurrency",rustoro.getQuota());
 		}
 		
 	}

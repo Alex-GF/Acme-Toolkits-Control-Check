@@ -5,8 +5,8 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.rustoro.Rustoro;
 import acme.entities.item.Item;
+import acme.entities.rustoro.Rustoro;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
@@ -50,7 +50,7 @@ public class InventorListRustoroService implements AbstractListService<Inventor,
 
 		final Item i = this.inventorRustoroRepository.findItemByRustoroId(entity.getId());
 		
-		request.unbind(entity, model, "code", "title", "budget");
+		request.unbind(entity, model, "code", "name", "quota");
 		model.setAttribute("itemName", i.getName());
 		
 	}
@@ -66,8 +66,8 @@ public class InventorListRustoroService implements AbstractListService<Inventor,
 		final String defaultCurrency = this.invetorItemRepository.findDefaultCurrency();
 		
 		result.stream()
-			.filter(c->!(c.getBudget().getCurrency().equals(defaultCurrency)))
-			.forEach(c->c.setBudget(this.changeLibrary.computeMoneyExchange(c.getBudget(), defaultCurrency).getTarget()));
+			.filter(r->!(r.getQuota().getCurrency().equals(defaultCurrency)))
+			.forEach(r->r.setQuota(this.changeLibrary.computeMoneyExchange(r.getQuota(), defaultCurrency).getTarget()));
 		
 		return result;
 	}

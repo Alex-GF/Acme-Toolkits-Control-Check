@@ -5,7 +5,7 @@
 
 <acme:list>
 	<acme:list-column code="inventor.rustoro.list.label.code" path="code" />	
-	<acme:list-column code="inventor.rustoro.list.label.title" path="title" />
-	<acme:list-column code="inventor.rustoro.list.label.budget" path="budget" />
+	<acme:list-column code="inventor.rustoro.list.label.name" path="name" />
+	<acme:list-column code="inventor.rustoro.list.label.quota" path="quota" />
 	<acme:list-column code="inventor.rustoro.list.label.itemName" path="itemName" />
 </acme:list>

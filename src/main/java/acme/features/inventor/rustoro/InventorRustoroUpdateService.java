@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.rustoro.Rustoro;
 import acme.entities.configuration.Configuration;
 import acme.entities.item.Item;
+import acme.entities.rustoro.Rustoro;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -59,13 +59,13 @@ public class InventorRustoroUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity,errors, "title", "description", "startDate", "finishDate", "budget", "link");
+		request.bind(entity,errors, "name", "explanation", "startDate", "finishDate", "quota", "moreInfo");
 		
 		final Model model = request.getModel();
 		
 		if(model.hasAttribute("defaultCurrency")){
 			final Money m = model.getAttribute("defaultCurrency", Money.class);
-			entity.setBudget(m);
+			entity.setQuota(m);
 		}
 		
 		
@@ -79,17 +79,17 @@ public class InventorRustoroUpdateService implements AbstractUpdateService<Inven
 		
 		final Item i = this.inventorRustoroRepository.findItemByRustoroId(entity.getId());
 		
-		request.unbind(entity, model, "code", "title", "description", "creationMoment", "startDate", "finishDate", "budget", "link");
+		request.unbind(entity, model, "code", "name", "explanation", "creationMoment", "startDate", "finishDate", "quota", "moreInfo");
 		model.setAttribute("itemName", i.getName());
 		final String defaultCurrency = this.inventorItemRepository.findDefaultCurrency();
 		
-		if(!(entity.getBudget().getCurrency().equals(defaultCurrency))) {
+		if(!(entity.getQuota().getCurrency().equals(defaultCurrency))) {
 			
-			final Money m = this.changeLibrary.computeMoneyExchange(entity.getBudget(), defaultCurrency).getTarget();
+			final Money m = this.changeLibrary.computeMoneyExchange(entity.getQuota(), defaultCurrency).getTarget();
 			
 			model.setAttribute("showDefaultCurrency", true);
-			model.setAttribute("budget",m);
-			model.setAttribute("defaultCurrency", entity.getBudget());
+			model.setAttribute("quota",m);
+			model.setAttribute("defaultCurrency", entity.getQuota());
 		}
 		
 	}
@@ -119,28 +119,28 @@ public class InventorRustoroUpdateService implements AbstractUpdateService<Inven
 		final boolean spamWordTitle;
 		
 		final Configuration configuration = this.inventorItemRepository.configuration();
-		final AntiSpam antiSpam = new AntiSpam(configuration.getStrongSpamWords(), configuration.getStrongSpamThreshold(), configuration.getWeakSpamWords(), configuration.getWeakSpamThreshold(), entity.getDescription());
+		final AntiSpam antiSpam = new AntiSpam(configuration.getStrongSpamWords(), configuration.getStrongSpamThreshold(), configuration.getWeakSpamWords(), configuration.getWeakSpamThreshold(), entity.getExplanation());
 		spamWord = antiSpam.getAvoidSpam();
-		errors.state(request, !spamWord, "description", "inventor.rustoro.form.error.spamWord");
+		errors.state(request, !spamWord, "explanation", "inventor.rustoro.form.error.spamWord");
 		
-		final AntiSpam antiSpamTitle = new AntiSpam(configuration.getStrongSpamWords(), configuration.getStrongSpamThreshold(), configuration.getWeakSpamWords(), configuration.getWeakSpamThreshold(), entity.getTitle());
+		final AntiSpam antiSpamTitle = new AntiSpam(configuration.getStrongSpamWords(), configuration.getStrongSpamThreshold(), configuration.getWeakSpamWords(), configuration.getWeakSpamThreshold(), entity.getName());
 		spamWordTitle = antiSpamTitle.getAvoidSpam();
-		errors.state(request, !spamWordTitle, "title", "inventor.rustoro.form.error.spamWord");
+		errors.state(request, !spamWordTitle, "name", "inventor.rustoro.form.error.spamWord");
 		
 		if(!(request.getModel().hasAttribute("defaultCurrency"))){
 			
-			if(!errors.hasErrors("budget")) {
+			if(!errors.hasErrors("quota")) {
 				boolean acceptedCurrency;
 				
-				acceptedCurrency = acceptedCurrencies.contains(entity.getBudget().getCurrency());
+				acceptedCurrency = acceptedCurrencies.contains(entity.getQuota().getCurrency());
 				
-				errors.state(request, acceptedCurrency, "budget", "inventor.rustoro.form.error.acceptedCurrency");
+				errors.state(request, acceptedCurrency, "quota", "inventor.rustoro.form.error.acceptedCurrency");
 				
 				boolean positiveValue;
 				
-				positiveValue = entity.getBudget().getAmount()>0;
+				positiveValue = entity.getQuota().getAmount()>0;
 				
-				errors.state(request, positiveValue, "budget", "inventor.rustoro.form.error.positiveValue");
+				errors.state(request, positiveValue, "quota", "inventor.rustoro.form.error.positiveValue");
 			}
 			
 		}else {
@@ -148,13 +148,13 @@ public class InventorRustoroUpdateService implements AbstractUpdateService<Inven
 			if(!errors.hasErrors("defaultCurrency")) {
 				boolean acceptedCurrency;
 				
-				acceptedCurrency = acceptedCurrencies.contains(entity.getBudget().getCurrency());
+				acceptedCurrency = acceptedCurrencies.contains(entity.getQuota().getCurrency());
 				
 				errors.state(request, acceptedCurrency, "defaultCurrency", "inventor.rustoro.form.error.acceptedCurrency");
 				
 				boolean positiveValue;
 				
-				positiveValue = entity.getBudget().getAmount()>0;
+				positiveValue = entity.getQuota().getAmount()>0;
 				
 				errors.state(request, positiveValue, "defaultCurrency", "inventor.rustoro.form.error.positiveValue");
 			}

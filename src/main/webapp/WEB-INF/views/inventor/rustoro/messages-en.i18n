@@ -1,16 +1,16 @@
 inventor.rustoro.list.label.code = Code
-inventor.rustoro.list.label.title = Title
-inventor.rustoro.list.label.budget = Budget
+inventor.rustoro.list.label.name = Name
+inventor.rustoro.list.label.quota = Quota
 inventor.rustoro.list.label.itemName = Item
 
 inventor.rustoro.form.label.code = Code
-inventor.rustoro.form.label.title = Title
-inventor.rustoro.form.label.description = Description
+inventor.rustoro.form.label.name = Name
+inventor.rustoro.form.label.explanation = Explanation
 inventor.rustoro.form.label.creationMoment = Creation Moment
 inventor.rustoro.form.label.startDate = Start Date
 inventor.rustoro.form.label.finishDate = Finish Date
-inventor.rustoro.form.label.budget = Budget
-inventor.rustoro.form.label.link = Link
+inventor.rustoro.form.label.quota = Quota
+inventor.rustoro.form.label.moreInfo = More Info
 inventor.rustoro.form.button.update = Update
 inventor.rustoro.form.button.delete = Delete
 inventor.rustoro.form.button.create = Create

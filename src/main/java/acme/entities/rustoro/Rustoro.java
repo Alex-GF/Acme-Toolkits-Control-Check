@@ -33,17 +33,17 @@ public class Rustoro extends AbstractEntity{
 	// Attributes --------------------------------------------------------------
 	
 	
-	@Pattern(regexp ="^[2-9]{1}[0-9]{1}[0-1]{1}[0-9]{1}[0-3]{1}[0-9]{1}-[A-Z]{3}(-[0-9])?$")
+	@Pattern(regexp ="^[2-9]{1}[0-9]{1}[0-1]{1}[0-9]{1}[0-3]{1}[0-9]{1}:[A-Z,a-z,0-9,_]{6}$")
 	@NotBlank
 	protected String code;
 	
 	@NotBlank
 	@Length(min = 1, max = 100)
-	protected String title;
+	protected String name;
 	
 	@NotBlank
 	@Length(min = 1, max = 255)
-	protected String description;
+	protected String explanation;
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -60,10 +60,10 @@ public class Rustoro extends AbstractEntity{
 	
 	@NotNull
 	@Valid
-	protected Money budget;
+	protected Money quota;
 	
 	@URL
-	protected String link;
+	protected String moreInfo;
 	
 	// Relationships ----------------------------------------------------------
 	

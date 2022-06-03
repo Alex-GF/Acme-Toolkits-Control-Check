@@ -10,23 +10,23 @@
 	<jstl:if test="${command == 'create'}">
 		<acme:input-textbox placeholder="201101-ASD" code="inventor.rustoro.form.label.code" path="code"/>	
 	</jstl:if>
-	<acme:input-textbox code="inventor.rustoro.form.label.title" path="title"/>
-	<acme:input-textarea code="inventor.rustoro.form.label.description" path="description"/>
+	<acme:input-textbox code="inventor.rustoro.form.label.name" path="name"/>
+	<acme:input-textarea code="inventor.rustoro.form.label.explanation" path="explanation"/>
 	<acme:input-moment readonly="true" code="inventor.rustoro.form.label.creationMoment" path="creationMoment"/>	
 	<acme:input-moment code="inventor.rustoro.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="inventor.rustoro.form.label.finishDate" path="finishDate"/>
 	
 	<jstl:choose>
 		<jstl:when test="${showDefaultCurrency}">	
-			<acme:input-money code="inventor.rustoro.form.label.budget" path="defaultCurrency"/>
-			<acme:input-money code="inventor.rustoro.form.label.budget" path="budget" readonly="true"/>
+			<acme:input-money code="inventor.rustoro.form.label.quota" path="defaultCurrency"/>
+			<acme:input-money code="inventor.rustoro.form.label.quota" path="quota" readonly="true"/>
 		</jstl:when>
 		<jstl:otherwise>
-			<acme:input-money code="inventor.rustoro.form.label.budget" path="budget"/>
+			<acme:input-money code="inventor.rustoro.form.label.quota" path="quota"/>
 		</jstl:otherwise>
 	</jstl:choose>
 
-	<acme:input-textbox code="inventor.rustoro.form.label.link" path="link"/>
+	<acme:input-textbox code="inventor.rustoro.form.label.moreInfo" path="moreInfo"/>
 	<acme:input-textbox readonly="true" code="inventor.rustoro.form.label.itemName" path="itemName"/>
 
 	<jstl:choose>

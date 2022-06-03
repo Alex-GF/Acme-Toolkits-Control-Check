@@ -47,7 +47,7 @@ public class InventorRustoroDeleteService implements AbstractDeleteService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity,errors,"code", "title", "description", "creationMoment", "startDate", "finishDate", "budget", "link");
+		request.bind(entity, errors, "code", "name", "explanation", "creationMoment", "startDate", "finishDate", "quota", "moreInfo");
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class InventorRustoroDeleteService implements AbstractDeleteService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title", "description", "creationMoment", "startDate", "finishDate", "budget", "link");
+		request.unbind(entity, model, "code", "name", "explanation", "creationMoment", "startDate", "finishDate", "quota", "moreInfo");
 	}
 
 	@Override
