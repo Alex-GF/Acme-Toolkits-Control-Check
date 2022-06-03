@@ -22,7 +22,7 @@ import acme.testing.TestHarness;
 
 public class InventorRustoroDeleteTest extends TestHarness {
 
-	private final Integer RECORD_INDEX_CHIMPUM_PRUEBA = 0;
+	private final Integer RECORD_INDEX_RUSTORO_PRUEBA = 0;
 	private final Integer RECORD_INDEX_ITEM_PRUEBA = 4;
 	
 	// Lifecycle management ---------------------------------------------------
@@ -40,13 +40,13 @@ public class InventorRustoroDeleteTest extends TestHarness {
 		final LocalDateTime now = LocalDateTime.now();
 		final String code = ""+ String.valueOf(now.getYear()).substring(2)
 			+ (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) 
-			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ "-ABC";
+			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ ":ABC_32";
 
 
 		super.clickOnButton("Add rustoro");
 		super.fillInputBoxIn("code", code);
-		super.fillInputBoxIn("title", "AA DELETE TEST CHIMPUM");
-		super.fillInputBoxIn("description", "Descripción del delete test");
+		super.fillInputBoxIn("name", "AA DELETE TEST RUSTORO");
+		super.fillInputBoxIn("explanation", "Descripción del delete test");
 		
 		
 		final LocalDateTime start = now.plusMonths(2);
@@ -56,8 +56,8 @@ public class InventorRustoroDeleteTest extends TestHarness {
         
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("finishDate", finishDate);
-		super.fillInputBoxIn("budget", "EUR 100.00");
-		super.fillInputBoxIn("link", "http:/linkdeprueba.com");
+		super.fillInputBoxIn("quota", "EUR 100.00");
+		super.fillInputBoxIn("moreInfo", "http:/linkdeprueba.com");
 		super.clickOnSubmit("Create");
 		super.checkNotErrorsExist();
 		
@@ -74,9 +74,9 @@ public class InventorRustoroDeleteTest extends TestHarness {
 		super.clickOnMenu("Inventor", "Rustoro list");
 		super.checkListingExists();
 		super.sortListing(1, "asc");
-		super.checkColumnHasValue(this.RECORD_INDEX_CHIMPUM_PRUEBA, 1, "AA DELETE TEST CHIMPUM");
+		super.checkColumnHasValue(this.RECORD_INDEX_RUSTORO_PRUEBA, 1, "AA DELETE TEST RUSTORO");
 
-		super.clickOnListingRecord(this.RECORD_INDEX_CHIMPUM_PRUEBA);
+		super.clickOnListingRecord(this.RECORD_INDEX_RUSTORO_PRUEBA);
 		super.checkFormExists();
 		super.clickOnSubmit("Delete");
 		super.checkNotErrorsExist();

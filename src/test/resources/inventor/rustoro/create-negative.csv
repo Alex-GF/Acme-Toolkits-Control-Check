@@ -1,4 +1,4 @@
-recordIndex,code,title,description,start-date,finish-date,budget,link,itemIndex
+recordIndex,code,name,explanation,start-date,finish-date,quota,moreInfo,itemIndex
 0,..,,,,,,,4
 0,..,title-01,description-01,2022/08/04 12:00,2022/10/06 12:00,EUR -30.00,http://prueba.com,4
 0,..,title-02,description-02,2022/08/04 12:00,2022/10/06 12:00,MEX 30.00,,4
@@ -10,4 +10,4 @@ recordIndex,code,title,description,start-date,finish-date,budget,link,itemIndex
 0,..,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean ma",description-05,2022/08/04 12:00,2022/10/06 12:00,EUR 30.00,,4
 0,..,title-08,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.",2022/08/04 12:00,2022/10/06 12:00,EUR 30.00,,4
 0,230416-ABC,title-09,description-08,2022/08/04 12:00,2022/10/06 12:00,EUR 30.00,http://prueba.com,4
-0,230416-fdm,title-10,description-09,2022/08/04 12:00,2022/10/06 12:00,EUR 30.00,http://prueba.com,4
+0,220416:fdm___,title-10,description-09,2022/08/04 12:00,2022/10/06 12:00,EUR 30.00,http://prueba.com,4

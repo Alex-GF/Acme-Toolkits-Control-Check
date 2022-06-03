@@ -1,4 +1,4 @@
-recordIndex,title,description,start-date,finish-date,budget,link
+recordIndex,name,explanation,start-date,finish-date,quota,moreInfo
 0,title-01,description-01 Nuevaaaaaa,2022/12/01 01:13,2023/01/15 01:11,EUR 4.12,http://holaaaaa.com
 0,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m",descripcion,2022/12/01 01:13,2023/01/15 01:11,EUR 4.12,http://holaaaaa.com
 0,title-02,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",2022/12/01 01:13,2023/01/15 01:11,EUR 4.12,http://holaaaaa.com

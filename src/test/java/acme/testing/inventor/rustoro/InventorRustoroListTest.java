@@ -12,10 +12,10 @@ public class InventorRustoroListTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/rustoro/list.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positive(final int recordIndex, final String code, final String title, 
-						final String description,  final String creationMoment,
-						final String startDate,final String finishDate, final String budget,
-						final String link, final String item) {
+	public void positive(final int recordIndex, final String code, final String name, 
+						final String explanation,  final String creationMoment,
+						final String startDate,final String finishDate, final String quota,
+						final String moreInfo, final String item) {
 		
 		super.signIn("inventor1", "inventor1");
 
@@ -23,25 +23,26 @@ public class InventorRustoroListTest extends TestHarness{
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, code);
-		super.checkColumnHasValue(recordIndex, 1, title);
-		//super.checkColumnHasValue(recordIndex, 2, budget);
+		super.checkColumnHasValue(recordIndex, 1, name);
+		
+		//super.checkColumnHasValue(recordIndex, 2, quota);
 
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
-		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("description", description);
+		super.checkInputBoxHasValue("name", name);
+		super.checkInputBoxHasValue("explanation", explanation);
 		super.checkInputBoxHasValue("creationMoment", creationMoment);
 		super.checkInputBoxHasValue("startDate", startDate);
 		super.checkInputBoxHasValue("finishDate", finishDate);
 		super.checkInputBoxHasValue("itemName", item);
 		
-		/*La comprobación del budget se deja comentada para que no falle el 
+		/*La comprobación de la cuota se deja comentada para que no falle el 
 		 * test por culpa de los algoritmos de cambio de divisa*/
 		
-		// super.checkInputBoxHasValue("budget", budget);
+		// super.checkInputBoxHasValue("quota", quota);
 		
-		super.checkInputBoxHasValue("link", link);
+		super.checkInputBoxHasValue("moreInfo", moreInfo);
 		
 		super.signOut();
 	}

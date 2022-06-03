@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.configuration.Configuration;
 import acme.entities.item.Item;
+import acme.entities.item.ItemType;
 import acme.entities.rustoro.Rustoro;
 import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
@@ -44,7 +45,7 @@ public class InventorRustoroCreateService implements AbstractCreateService<Inven
 		
 		inventor = item.getInventor();
 		
-		result = request.isPrincipal(inventor) && this.repository.findRustoroByItemId(itemId)==null;
+		result = request.isPrincipal(inventor) && this.repository.findRustoroByItemId(itemId)==null && item.getType()==ItemType.TOOL;
 		
 		return result;
 	}
@@ -196,9 +197,9 @@ public class InventorRustoroCreateService implements AbstractCreateService<Inven
 				dayString += c.get(Calendar.DAY_OF_MONTH);
 			}
 			
-			final String codeYear = entity.getCode().split("-")[0].substring(0,2);
-			final String codeMonth = entity.getCode().split("-")[0].substring(2,4);
-			final String codeDay = entity.getCode().split("-")[0].substring(4,6);
+			final String codeYear = entity.getCode().split(":")[0].substring(0,2);
+			final String codeMonth = entity.getCode().split(":")[0].substring(2,4);
+			final String codeDay = entity.getCode().split(":")[0].substring(4,6);
 			
 			errors.state(request, codeYear.equals(yearString) && codeMonth.equals(monthString) && codeDay.equals(dayString) , "code", "inventor.rustoro.form.error.invalidCode");
 			

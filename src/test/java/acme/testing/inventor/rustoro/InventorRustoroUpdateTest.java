@@ -12,8 +12,9 @@ public class InventorRustoroUpdateTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/rustoro/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final String title, final String description, final String startDate, final String finishDate,
-		final String budget, final String link) {
+	public void positiveTest(final int recordIndex, final String name, final String explanation, 
+							final String startDate, final String finishDate,
+							final String quota, final String moreInfo) {
 		
 		super.signIn("inventor1", "inventor1");
 		
@@ -29,24 +30,24 @@ public class InventorRustoroUpdateTest extends TestHarness{
 		
 		super.checkFormExists();
 		
-		super.fillInputBoxIn("title", title);
-		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("name", name);
+		super.fillInputBoxIn("explanation", explanation);
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("finishDate", finishDate);
-		super.fillInputBoxIn("budget", budget);
-		super.fillInputBoxIn("link", link);
+		super.fillInputBoxIn("quota", quota);
+		super.fillInputBoxIn("moreInfo", moreInfo);
 		super.clickOnSubmit("Update");
 		
 		super.clickOnButton("Show rustoro");
 		
 		super.checkFormExists();
 		
-		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("description", description);
+		super.checkInputBoxHasValue("name", name);
+		super.checkInputBoxHasValue("explanation", explanation);
 		super.checkInputBoxHasValue("startDate", startDate);
 		super.checkInputBoxHasValue("finishDate", finishDate);
-		super.checkInputBoxHasValue("budget", budget);
-		super.checkInputBoxHasValue("link", link);
+		super.checkInputBoxHasValue("quota", quota);
+		super.checkInputBoxHasValue("moreInfo", moreInfo);
 		
 		
 		super.signOut();
@@ -57,8 +58,9 @@ public class InventorRustoroUpdateTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/rustoro/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void negativeTest(final int recordIndex, final String title, final String description, final String startDate, final String finishDate,
-		final String budget, final String link) {
+	public void negativeTest(final int recordIndex, final String name, final String explanation, 
+							final String startDate, final String finishDate,
+							final String quota, final String moreInfo) {
 		
 		super.signIn("inventor1", "inventor1");
 		
@@ -74,12 +76,12 @@ public class InventorRustoroUpdateTest extends TestHarness{
 		
 		super.checkFormExists();
 		
-		super.fillInputBoxIn("title", title);
-		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("name", name);
+		super.fillInputBoxIn("explanation", explanation);
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("finishDate", finishDate);
-		super.fillInputBoxIn("budget", budget);
-		super.fillInputBoxIn("link", link);
+		super.fillInputBoxIn("quota", quota);
+		super.fillInputBoxIn("moreInfo", moreInfo);
 		super.clickOnSubmit("Update");
 		
 		super.checkErrorsExist();

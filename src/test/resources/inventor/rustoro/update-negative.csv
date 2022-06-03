@@ -1,4 +1,4 @@
-recordIndex,title,description,start-date,finish-date,budget,link
+recordIndex,name,explanation,start-date,finish-date,quota,moreInfo
 0,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean ma","Primera descricion",2021/12/01 01:13,2022/01/15 01:11,EUR 10.00,http://holaaaaa.com
 0,title-prueba-01,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.",2021/12/01 01:13,2022/01/15 01:11,EUR 10.00,http://holaaaaa.com
 0,,description-01,2021/12/01 01:13,2022/01/15 01:11,EUR 4.12,http://ejemplo.com

@@ -14,7 +14,10 @@ public class InventorRustoroCreateTest extends TestHarness {
     @ParameterizedTest
     @CsvFileSource(resources = "/inventor/rustoro/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
     @Order(10)
-    public void positive(final int recordIndex, final String title, final String description, final String startDate, final String finishDate, final String budget, final String link, final String item, final int itemIndex) {
+    public void positive(final int recordIndex, final String name, final String explanation, 
+    					final String startDate, final String finishDate, final String quota, 
+    					final String moreInfo, final String item, final int itemIndex) {
+    	
         super.signIn("inventor1", "inventor1");
 
         super.clickOnMenu("Inventor", "My Items");
@@ -33,35 +36,35 @@ public class InventorRustoroCreateTest extends TestHarness {
                 + (now.getMinute() < 10 ? "0" + now.getMinute() : now.getMinute());
         final String code = ""+ String.valueOf(now.getYear()).substring(2)
             			+ (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) 
-            			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ "-ABC";
+            			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ ":ABC_43";
         
         
         super.fillInputBoxIn("code", code);
-        super.fillInputBoxIn("title", title);
-        super.fillInputBoxIn("description", description);
+        super.fillInputBoxIn("name", name);
+        super.fillInputBoxIn("explanation", explanation);
         super.fillInputBoxIn("startDate", startDate);
         super.fillInputBoxIn("finishDate", finishDate);
-        super.fillInputBoxIn("budget", budget);
-        super.fillInputBoxIn("link", link);
+        super.fillInputBoxIn("quota", quota);
+        super.fillInputBoxIn("moreInfo", moreInfo);
         super.clickOnSubmit("Create");
 
         super.clickOnMenu("Inventor", "Rustoro list");
         super.checkListingExists();
         super.sortListing(0, "asc");
-        super.checkColumnHasValue(recordIndex, 1, title);
-        super.checkColumnHasValue(recordIndex, 2, budget);
+        super.checkColumnHasValue(recordIndex, 1, name);
+        super.checkColumnHasValue(recordIndex, 2, quota);
         super.checkColumnHasValue(recordIndex, 3, item);
 
         super.clickOnListingRecord(recordIndex);
 
         super.checkFormExists();
-        super.fillInputBoxIn("title", title);
-        super.fillInputBoxIn("description", description);
+        super.fillInputBoxIn("name", name);
+        super.fillInputBoxIn("explanation", explanation);
         super.checkInputBoxHasValue("creationMoment", date);
         super.fillInputBoxIn("startDate", startDate);
         super.fillInputBoxIn("finishDate", finishDate);
-        super.fillInputBoxIn("budget", budget);
-        super.fillInputBoxIn("link", link);
+        super.fillInputBoxIn("quota", quota);
+        super.fillInputBoxIn("moreInfo", moreInfo);
 
         super.signOut();
     }
@@ -69,7 +72,10 @@ public class InventorRustoroCreateTest extends TestHarness {
     @ParameterizedTest
     @CsvFileSource(resources = "/inventor/rustoro/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
     @Order(20)
-    public void negative(final int recordIndex,final String fakeCode, final String title, final String description, final String startDate, final String finishDate, final String budget, final String link, final int itemIndex) {
+    public void negative(final int recordIndex,final String fakeCode, final String name, 
+    					final String explanation, final String startDate, final String finishDate, 
+    					final String quota, final String moreInfo, final int itemIndex) {
+    	
         super.signIn("inventor1", "inventor1");
 
         super.clickOnMenu("Inventor", "My Items");
@@ -86,18 +92,18 @@ public class InventorRustoroCreateTest extends TestHarness {
 			final LocalDateTime now = LocalDateTime.now();
 			code = ""+ String.valueOf(now.getYear()).substring(2)
 	 			+ (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) 
-	 			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ "-ABC";
+	 			+ (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())+ ":ABC_43";
 			
 		}
         
 		
 		super.fillInputBoxIn("code", code);
-        super.fillInputBoxIn("title", title);
-        super.fillInputBoxIn("description", description);
+        super.fillInputBoxIn("name", name);
+        super.fillInputBoxIn("explanation", explanation);
         super.fillInputBoxIn("startDate", startDate);
         super.fillInputBoxIn("finishDate", finishDate);
-        super.fillInputBoxIn("budget", budget);
-        super.fillInputBoxIn("link", link);
+        super.fillInputBoxIn("quota", quota);
+        super.fillInputBoxIn("moreInfo", moreInfo);
         super.clickOnSubmit("Create");
 
         super.checkErrorsExist();
