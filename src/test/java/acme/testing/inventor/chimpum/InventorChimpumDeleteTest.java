@@ -45,7 +45,7 @@ public class InventorChimpumDeleteTest extends TestHarness {
 
 		super.clickOnButton("Add chimpum");
 		super.fillInputBoxIn("code", code);
-		super.fillInputBoxIn("title", "DELETE TEST CHIMPUM");
+		super.fillInputBoxIn("title", "AA DELETE TEST CHIMPUM");
 		super.fillInputBoxIn("description", "Descripción del delete test");
 		
 		
@@ -74,7 +74,7 @@ public class InventorChimpumDeleteTest extends TestHarness {
 		super.clickOnMenu("Inventor", "Chimpum list");
 		super.checkListingExists();
 		super.sortListing(1, "asc");
-		super.checkColumnHasValue(this.RECORD_INDEX_CHIMPUM_PRUEBA, 1, "DELETE TEST CHIMPUM");
+		super.checkColumnHasValue(this.RECORD_INDEX_CHIMPUM_PRUEBA, 1, "AA DELETE TEST CHIMPUM");
 
 		super.clickOnListingRecord(this.RECORD_INDEX_CHIMPUM_PRUEBA);
 		super.checkFormExists();

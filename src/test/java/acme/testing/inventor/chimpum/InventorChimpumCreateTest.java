@@ -29,7 +29,7 @@ public class InventorChimpumCreateTest extends TestHarness {
         final String date = now.getYear() + "/"
                 + (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) + "/"
                 + (now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth()) +" "
-                + (now.getHour()) + ":"
+                + (now.getHour() < 10 ? "0" + now.getHour() : now.getHour()) + ":"
                 + (now.getMinute() < 10 ? "0" + now.getMinute() : now.getMinute());
         final String code = ""+ String.valueOf(now.getYear()).substring(2)
             			+ (now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue()) 

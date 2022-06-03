@@ -85,28 +85,6 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		final Chimpum result = new Chimpum();
 		
-//		final List<String> codes = this.repository.findAllCodes();
-//		final String firstCode = GenerateCodeLibrary.generateCode(codes,"^[A-Z]{3}(-[0-9])?$");
-//		
-//		final Calendar c = new GregorianCalendar();
-//		final Date d = new Date();
-//		c.setTime(d);
-//		
-//		String code = c.get(Calendar.YEAR) + "";
-//		
-//		code = code.substring(2);
-//		
-//		if(c.get(Calendar.MONTH) < 9) {
-//			code += "0"+ (c.get(Calendar.MONTH) + 1);
-//		}else {
-//			code += c.get(Calendar.MONTH);
-//		}
-//				
-//		code += c.get(Calendar.DAY_OF_MONTH);
-//		
-//		code += "-" + firstCode;
-//		
-//		result.setCode(code);
 		result.setCreationMoment(new Date());
 		
 		result.setItem(item);
@@ -201,8 +179,6 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			c.setTime(entity.getCreationMoment());
 			
 			final int yearInt = c.get(Calendar.YEAR);
-			final int monthInt = c.get(Calendar.MONTH);
-			final int dayInt = c.get(Calendar.DAY_OF_MONTH);
 			
 			final String yearString = String.valueOf(yearInt).substring(2);
 			

@@ -37,8 +37,6 @@ public class InventorChimpumUpdateTest extends TestHarness{
 		super.fillInputBoxIn("link", link);
 		super.clickOnSubmit("Update");
 		
-		
-		
 		super.clickOnButton("Show chimpum");
 		
 		super.checkFormExists();
